@@ -14,4 +14,13 @@
     "depends": [
         "base"
     ],
+
+    "data": [
+        "security/ir.model.access.csv",
+        "views/course.xml",
+    ],
+
+    "demo": [
+        "demo/course.xml",
+    ],
 }
