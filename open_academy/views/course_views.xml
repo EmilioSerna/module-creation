@@ -18,6 +18,8 @@
             <tree>
                 <field name="title"/>
                 <field name="description"/>
+                <field name="responsible_id" />
+                <field name="session_ids" />
             </tree>
         </field>
     </record>
@@ -28,9 +30,15 @@
         <field name="arch" type="xml">
             <form>
                 <field name="title" />
+                <field name="responsible_id" />
+
                 <notebook colspan="4">
                     <page string="Description">
                         <field name="description" nolabel="1" />
+                    </page>
+
+                    <page string="Sessions">
+                        <field name="session_ids" nolabel="1" />
                     </page>
                 </notebook>
             </form>
