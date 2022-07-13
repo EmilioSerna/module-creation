@@ -127,3 +127,12 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# PyCharm
+.idea
+/.eslintrc.json
+/.flake8
+/.pre-commit-config.yaml
+/.pre-commit-config-optional.yaml
+/.pylintrc
+/.pylintrc-optional
