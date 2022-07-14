@@ -19,5 +19,6 @@
 
     'demo': [
         'demo/demo.xml',
+        'demo/course.xml',
     ],
 }
