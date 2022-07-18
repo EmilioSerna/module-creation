@@ -17,10 +17,10 @@
 
     "data": [
         "security/ir.model.access.csv",
-        "views/course.xml",
+        "views/course_views.xml",
     ],
 
     "demo": [
-        "demo/course.xml",
+        "demo/course_demo.xml",
     ],
 }
