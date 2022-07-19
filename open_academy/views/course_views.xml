@@ -30,4 +30,14 @@
             </form>
         </field>
     </record>
+    <record id="course_search" model="ir.ui.view">
+        <field name="name">Courses</field>
+        <field name="model">course</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="title" />
+                <field name="description" />
+            </search>
+        </field>
+    </record>
 </odoo>
