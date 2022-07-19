@@ -17,13 +17,16 @@
             </tree>
         </field>
     </record>
-    <record id="course_form" model="ir.ui.view">
+    <record id="course_notebook" model="ir.ui.view">
         <field name="name">Courses</field>
         <field name="model">course</field>
         <field name="arch" type="xml">
             <form>
-                <field name="title"/>
-                <field name="description"/>
+                <notebook colspan="4">
+                    <page string="Description">
+                        <field name="description" nolabel="1" />
+                    </page>
+                </notebook>
             </form>
         </field>
     </record>
