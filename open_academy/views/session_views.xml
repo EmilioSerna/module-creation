@@ -6,8 +6,46 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <menuitem id="open_academy_root_session_menu" name="Sessions" sequence="1"/>
+    <menuitem id="session_menu" name="Sessions" sequence="2"
+    action="session_action" parent="open_academy_root_menu"/>
 
-    <menuitem id="session_menu" name="Sessions" sequence="1"
-    action="session_action" parent="open_academy_root_session_menu"/>
+    <record id="session_view_form" model="ir.ui.view">
+        <field name="name">session.view.form</field>
+        <field name="model">session</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet string="Session">
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="start_date" />
+                            <field name="duration" />
+                        </group>
+                        <group>
+                            <field name="seats" />
+                            <field name="percent_seats" />
+                        </group>
+                    </group>
+                    <group>
+                        <field name="instructor_id" />
+                        <field name="course_id" />
+                        <field name="attendee_ids" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="session_view_tree" model="ir.ui.view">
+        <field name="name">session.view.tree</field>
+        <field name="model">session</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="start_date" />
+                <field name="seats"/>
+                <field name="percent_seats" widget="progressbar" />
+            </tree>
+        </field>
+    </record>
 </odoo>
