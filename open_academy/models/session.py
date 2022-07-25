@@ -11,6 +11,7 @@ class Session(models.Model):
     duration = fields.Float()
     seats = fields.Integer(string="Number of seats")
     percent_seats = fields.Integer(string="Taken seats %", compute="_compute_seats")
+    attendee_count = fields.Integer(compute="_compute_attendees", store=True)
     active = fields.Boolean(default=True)
     instructor_id = fields.Many2one("res.partner", domain="[('instructor', '=', True)]")
     course_id = fields.Many2one("course")
@@ -23,6 +24,11 @@ class Session(models.Model):
                 record.percent_seats = round(len(record.attendee_ids) / record.seats * 100)
             else:
                 record.percent_seats = 0
+
+    @api.depends("attendee_ids")
+    def _compute_attendees(self):
+        for record in self:
+            record.attendee_count = len(record.attendee_ids)
 
     @api.onchange("seats", "attendee_ids")
     def _onchange_percent_seats(self):
@@ -42,4 +48,4 @@ class Session(models.Model):
     def _check_instructor_in_attendees(self):
         for record in self:
             if record.instructor_id in record.attendee_ids:
-                raise ValidationError(_("Instructor present in the attendees of his/her own session"))
+                raise ValidationError(_("Instructor must not be an attendee of his/her own session"))
