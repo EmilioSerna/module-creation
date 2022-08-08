@@ -1,0 +1,55 @@
+<odoo>
+    <record id="report_session" model="ir.actions.report">
+        <field name="name">Session Report</field>
+        <field name="model">session</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">open_academy.session_view_report</field>
+        <field name="report_file">open_academy.session_view_report</field>
+        <field name="attachment_use" eval="True"/>
+        <field name="binding_model_id" ref="model_session"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="session_view_report">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="session">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2 t-field="session.name" /><br />
+                    </div>
+                    <div class="row mt48 mb32">
+                        <div class="col-auto">
+                            <strong>Start Date:</strong>
+                            <p t-field="session.start_date"/><br />
+                            <strong>Attendees:</strong><br />
+                        </div>
+                    </div>
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <strong>Name</strong>
+                                </th>
+                                <th>
+                                    <strong>Email</strong>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="session.attendee_ids" t-as="attendee">
+                                <tr>
+                                    <td>
+                                        <span t-field="attendee.name"/><br/>
+                                    </td>
+                                    <td>
+                                        <span t-field="attendee.email"/><br/>
+                                    </td>
+                                </tr>
+                            </t>
+                          </tbody>
+                    </table>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
